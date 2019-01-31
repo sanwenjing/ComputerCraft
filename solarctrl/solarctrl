@@ -1,0 +1,17 @@
+local stats=0
+function out(txt)
+print(txt.."\n")
+end
+function en()
+return redstone.getAnalogInput("back")
+end
+function on()
+redstone.setOutput("bottom",true)
+end
+function off()
+redstone.setOutput("bottom",false)
+end
+while 1 do
+while en()>0  do out("Outputing") on() sleep(1) end
+while en()<14 do out("Charging") off() sleep(1) end
+end

@@ -1,0 +1,4 @@
+os.loadAPI("api")
+--api.dig(1)
+api.out("Hello sam")
+

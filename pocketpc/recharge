@@ -1,0 +1,6 @@
+os.loadAPI("api")
+local ms={}
+ms.ac="recharge"
+api.send(ms)
+print("recharge")
+

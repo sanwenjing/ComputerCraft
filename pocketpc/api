@@ -1,0 +1,38 @@
+modem=peripheral.wrap("back")
+modem.open(5)
+function send(txt)
+modem.transmit(5,4,txt)
+end
+function out(txt)  --print msg
+print(txt.."\n")
+end
+function dig(step) --dig step forward
+local msg={}
+msg.ac="dig"
+msg.step=step
+send(msg)
+out("Dig Step:"..step)
+end
+
+function turn(LeftOrRight)
+local msg={}
+	if LeftOrRight>0 then 
+	msg.ac="turnright"
+	else
+	msg.ac="turnleft"
+	end
+send(msg)
+out("ACTION:"..msg.ac)
+end
+
+function digCube(deep,step)  --dig x*y*3
+local ms={}
+ms.ac="cube"
+ms.x=deep
+ms.y=step
+api.send(ms)
+out("digCube:"..ms.x.."*"..ms.y)
+end
+
+
+

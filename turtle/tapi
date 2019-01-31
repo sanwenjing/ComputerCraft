@@ -1,0 +1,19 @@
+modem=peripheral.wrap("right")
+modem.open(5)
+function out(txt)
+print(txt.."\n")
+end
+function send(msg)
+modem.transmit(4,5,msg)
+end
+function fl()
+out("FL:"..turtle.getFuelLevel())
+end
+function dig(step)
+step=step+0
+for i=1,step do
+turtle.dig() turtle.forward() turtle.digUp() turtle.digDown() 
+fl() out("Step:"..(step-i))
+end
+end
+

@@ -1,0 +1,21 @@
+turtle.select(1)
+function out(txt)
+print(txt.."\n")
+end
+while not turtle.suck(1) do sleep(1) out("no mutou") end
+turtle.craft()
+turtle.transferTo(5,2)
+turtle.craft()
+turtle.transferTo(6,4)
+turtle.transferTo(10,4)
+while turtle.getItemCount(1)<12 do
+while not turtle.suckDown(1) do sleep(1) out("no stone") end
+end
+turtle.transferTo(2,4)
+turtle.transferTo(5,4)
+while turtle.getItemCount(2)>0 do
+turtle.craft(1)
+turtle.select(3)
+while not turtle.dropUp(1) do sleep(1) out("output full") end
+end
+out("craft done!")

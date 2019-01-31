@@ -1,0 +1,4 @@
+turtle.select(1)
+turtle.refuel()
+print(turtle.getFuelLevel().."\n")
+print("recharge done")

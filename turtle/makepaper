@@ -1,0 +1,22 @@
+turtle.select(2)
+function out(txt)
+print(txt.."\n")
+end
+while turtle.getItemCount(2)<4 do
+while not turtle.suck(1) do sleep(1) out("no input") end
+end
+if turtle.getItemCount(5)<1 then
+turtle.transferTo(5,1)
+end
+if turtle.getItemCount(7)<1 then
+turtle.transferTo(7,1)
+end
+if turtle.getItemCount(10)<1 then
+turtle.transferTo(10,1)
+end
+turtle.select(6)
+turtle.placeDown()
+turtle.craft(1)
+turtle.select(7)
+while not turtle.dropUp(2) do sleep(1) out("output full") end
+out("craft done!")
