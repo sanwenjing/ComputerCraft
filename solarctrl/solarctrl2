@@ -1,0 +1,19 @@
+--Disigned by sanwenjing
+function on()
+redstone.setOutput("back",true)
+print("output on!")
+end
+function off()
+redstone.setOutput("back",false)
+print("output off")
+end
+while 1 do
+local status=redstone.getAnalogInput("right")
+print(status)
+if status>13 then
+ on()
+elseif status<1 then
+ off()
+end
+sleep(1)
+end
