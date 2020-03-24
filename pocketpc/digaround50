@@ -1,0 +1,4 @@
+os.loadAPI("api")
+api.digAround(50)
+
+

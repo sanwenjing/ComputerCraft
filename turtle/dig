@@ -20,19 +20,29 @@ if message~="" then
  turtle.turnLeft()
  turtle.turnLeft()
    end
+--digAround
+if message.ac=="digaround" then
+tapi.dig(message.step)
+turtle.turnRight()
+tapi.dig(3)
+turtle.turnRight()
+tapi.dig(message.step)
+end 
+
+ 
  if message.ac=="cube" then
- local x=message.x
- local fx=0
- while x>0 do
- x=x-1
- tapi.dig(message.y)
- if fx==0 then turtle.turnRight() tapi.dig(1) turtle.turnRight() fx=1 
- else turtle.turnLeft() 
- if x~=0 then tapi.dig(1) end
- turtle.turnLeft() fx=0
- end
-  end--endx
-  end--cubeend 
-   
+   local x=message.x
+   local fx=0
+   while x>0 do
+   x=x-1
+   tapi.dig(message.y)
+   if fx==0 then turtle.turnRight() tapi.dig(1) turtle.turnRight() fx=1 
+   else turtle.turnLeft() 
+   if x~=0 then tapi.dig(1) end
+   turtle.turnLeft() fx=0
+   end
+   end--endx
+   end--cubeend 
+ 
       end
 end

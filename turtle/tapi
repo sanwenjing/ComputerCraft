@@ -1,4 +1,5 @@
 modem=peripheral.wrap("right")
+if modem==nil then modem=peripheral.wrap("left") end
 modem.open(5)
 function out(txt)
 print(txt.."\n")
@@ -12,7 +13,12 @@ end
 function dig(step)
 step=step+0
 for i=1,step do
-turtle.dig() turtle.forward() turtle.digUp() turtle.digDown() 
+turtle.dig()
+while(not turtle.forward())
+do
+turtle.dig()
+end
+turtle.digUp() turtle.digDown() 
 fl() out("Step:"..(step-i))
 end
 end

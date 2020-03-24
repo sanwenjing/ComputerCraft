@@ -34,5 +34,13 @@ api.send(ms)
 out("digCube:"..ms.x.."*"..ms.y)
 end
 
+function digAround(step) --dig step forward
+local msg={}
+msg.ac="digaround"
+msg.step=step
+send(msg)
+out("DigAround Step:"..step)
+end
+
 
 
