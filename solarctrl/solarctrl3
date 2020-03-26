@@ -1,0 +1,27 @@
+--Disigned by sanwenjing
+os.loadAPI("ocs/apis/sensor")
+mys=sensor.wrap("left")
+pos="1,0,-1" --Get the position by ocs/programs/sensorview
+Output="bottom"
+
+function on()
+--redstone.setBundledOutput("left",colors.green)
+redstone.setOutput(Output,true)
+print("output on!")
+end
+function off()
+--redstone.setBundledOutput("left",colors.green)
+redstone.setOutput(Output,false)
+print("output off")
+end
+while 1 do
+local sen=mys.getTargetDetails(pos)
+local per=sen.StoredPercentage
+print("StoredPercentage:"..per.."%")
+if per>99 then
+ on()
+elseif per<1 then
+ off()
+end
+sleep(1)
+end
