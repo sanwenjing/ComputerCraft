@@ -1,0 +1,41 @@
+os.loadAPI("opAPI")
+ box1="tile_pe_condenser_name_0"
+ output1="right"
+box2="tile_pe_condenser_name_1"
+output2="back"
+
+function on(side)
+redstone.setOutput(side,true)
+print(side.." output on!")
+end
+function off(side)
+redstone.setOutput(side,false)
+print(side.." output off!")
+end
+
+
+while 1 do
+local info1=opAPI.getBoxInfo(box1)
+opAPI.output(info1)
+per1=info1.storedPersentage
+if  per1>50 then
+ off(output1)
+ elseif per1 <10 then
+ on(output1)
+ 
+  end
+
+local info2=opAPI.getBoxInfo(box2)
+opAPI.output(info2)
+per2=info2.storedPersentage
+if per2>50 then
+off(output2)
+elseif per2 <10 then
+on(output2)
+end
+sleep(3)
+end
+--print(box1.getAllstacks())
+--print(box1.condenseItems())
+--print(textutils.serialise(tab))
+

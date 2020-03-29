@@ -1,0 +1,17 @@
+function getBoxInfo(side)
+local tar=peripheral.wrap(side)
+local total=tar.getInventorySize()
+local all=tar.getAllStacks()
+local stored=0
+for name in pairs(all) do
+stored=stored+1
+end
+local info={}
+info.total=total
+info.storedPersentage=stored/total*100
+return info
+end
+function output(tab)
+print(textutils.serialise(tab))
+end
+--output(getBoxInfo("tile_pe_condenser_name_0"))
