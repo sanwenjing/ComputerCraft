@@ -1,0 +1,37 @@
+function out(txt)
+print(txt.."\n")
+end
+function send(msg)
+modem.transmit(4,5,msg)
+end
+function fl()
+out("FL:"..turtle.getFuelLevel())
+end
+function rf()
+local pos=turtle.getSelectedSlot()
+turtle.select(16)
+turtle.refuel()
+turtle.select(pos)
+end
+
+function bk(step)
+turtle.turnRight()
+turtle.turnRight()
+if step then dig(step)
+  turtle.turnRight()
+  turtle.turnRight()
+  end
+end
+
+
+function dig(step)
+rf()
+for i=1,step,1 do
+turtle.dig()
+while(not turtle.forward()) do turtle.dig() end
+turtle.digUp() turtle.digDown() 
+fl()
+out("Step:"..(step-i))
+end
+end
+

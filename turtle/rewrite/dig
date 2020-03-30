@@ -1,0 +1,65 @@
+os.loadAPI("tapi")
+local flag=true
+--dig a circle
+function digCircle(step)
+ for i=1,2,1 do
+  tapi.dig(step)
+  turtle.turnRight()
+  tapi.dig(3)
+  turtle.turnRight()
+  tapi.dig(step)
+ end
+end
+
+function autoTurn()
+if flag then 
+		turtle.turnRight()
+		tapi.dig(1)
+		turtle.turnRight()
+		flag=false
+    else
+		turtle.turnLeft()
+		tapi.dig(1)
+		turtle.turnLeft()
+		flag=true
+    end
+end
+
+--dig square
+function digSquare(step)
+  for i=1,step do
+    tapi.dig(step)
+    if i<step then
+		autoTurn() 
+	else
+		tapi.bk()
+		flag=true
+	end
+  end
+end
+
+--dig cube
+function digCube(step)
+local bkstp=0
+  for i=1,math.modf(step/3) do
+    digSquare(step)
+    if i<math.modf(step/3) then
+		for j=1,3 do
+			while not turtle.up() do turtle.digUp() end
+			bkstp=bkstp+1
+		end 
+	else
+		for j=1,bkstp do
+			while not turtle.down() do turtle.digDown() end
+		end 
+	end
+  end
+end
+
+
+
+
+
+
+
+
