@@ -45,12 +45,13 @@ local bkstp=0
     digSquare(step)
     if i<math.modf(step/3) then
 		for j=1,3 do
-			while not turtle.up() do turtle.digUp() end
+			tapi.goUp()
+			turtle.digUp()
 			bkstp=bkstp+1
 		end 
 	else
 		for j=1,bkstp do
-			while not turtle.down() do turtle.digDown() end
+			tapi.goDn()
 		end 
 	end
   end

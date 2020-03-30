@@ -1,9 +1,9 @@
+--designed by sanwenjing
+
 function out(txt)
 print(txt.."\n")
 end
-function send(msg)
-modem.transmit(4,5,msg)
-end
+
 function fl()
 out("FL:"..turtle.getFuelLevel())
 end
@@ -15,11 +15,9 @@ turtle.select(pos)
 end
 
 function bk(step)
-turtle.turnRight()
-turtle.turnRight()
+tBk()
 if step then dig(step)
-  turtle.turnRight()
-  turtle.turnRight()
+  tBk()
   end
 end
 
@@ -27,11 +25,26 @@ end
 function dig(step)
 rf()
 for i=1,step,1 do
-turtle.dig()
-while(not turtle.forward()) do turtle.dig() end
-turtle.digUp() turtle.digDown() 
+goFwd()
+turtle.digDown()
+while turtle.digUp() do sleep(0.5) end
 fl()
 out("Step:"..(step-i))
 end
 end
 
+function goFwd()
+while(not turtle.forward()) do turtle.dig() end
+end
+
+function goUp()
+while turtle.detectUp() or not turtle.up() do turtle.digUp() end
+end
+
+function goDn()
+while not turtle.down() do turtle.digDown() end
+end
+
+function tBk()
+for i=1,2 do turtle.turnRight() end
+end
