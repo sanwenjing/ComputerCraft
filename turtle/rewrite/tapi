@@ -37,12 +37,18 @@ function goFwd()
 while(not turtle.forward()) do turtle.dig() end
 end
 
-function goUp()
-while turtle.detectUp() or not turtle.up() do turtle.digUp() end
+function goUp(step)
+ if step==nil then step=1 end
+ for i=1,step do
+	while turtle.detectUp() or not turtle.up() do turtle.digUp() end
+ end
 end
 
-function goDn()
-while not turtle.down() do turtle.digDown() end
+function goDn(step)
+	if step==nil then step=1 end
+	for i=1,step do
+		while not turtle.down() do turtle.digDown() end
+	end
 end
 
 function tBk()
