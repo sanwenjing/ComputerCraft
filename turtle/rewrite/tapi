@@ -33,6 +33,18 @@ out("Step:"..(step-i))
 end
 end
 
+function digTurn(left)
+if left then 
+turtle.turnLeft()
+dig(1)
+turtle.turnLeft()
+else
+turtle.turnRight()
+dig(1)
+turtle.turnRight()
+end
+end
+
 function goFwd()
 while(not turtle.forward()) do turtle.dig() end
 end
